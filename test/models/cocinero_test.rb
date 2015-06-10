@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class CocineroTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+ 
+  def setup
+    @cocinero = Chef.new(name: "jhon", email: 'jhon@mail.com')
+  end
 end
