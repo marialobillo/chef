@@ -21,8 +21,20 @@ class CocineroTest < ActiveSupport::TestCase
   end
 
   test "cocinero name should not be too short" do
-    @cocinero.name = "aa"
+    @cocinero.name = "aa" 
     assert_not @cocinero.valid?
   end
-  
+
+  test "email should be present" do 
+    @cocinero.email = " "
+    assert_not @cocinero.valid?
+  end
+
+  test "email length should be within bounds" do
+    @cocinero.email = "a" * 101 + "@mail.com"
+    assert_not @cocinero.valid?
+  end
+
+
+
 end
