@@ -35,6 +35,18 @@ class CocineroTest < ActiveSupport::TestCase
     assert_not @cocinero.valid?
   end
 
+  test "email address should be unique" do 
+    dup_cocinero = @cocinero.dup 
+    dup_cocinero.email = @cocinero.email.upcase
+    @cocinero.save
+    assert_not dup_cocinero.valid?
+  end
 
+  test "email validation should accept valid addresses" do
 
+  end
+
+  test "email validation should reject invalid addresses" do
+
+  end
 end
