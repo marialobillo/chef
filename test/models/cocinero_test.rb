@@ -43,10 +43,19 @@ class CocineroTest < ActiveSupport::TestCase
   end
 
   test "email validation should accept valid addresses" do
-
+    valid_addresses = %w[user@eee.com R_TDD-DS@eee.hello.org user@example.com first.last@eem.au laura+joe@monk.com]
+    valid_addresses.each do |va|
+      @cocinero.email = va
+      assert @cocinero.valid?, '#{va.inspect} should be valid'
+    end
   end
 
   test "email validation should reject invalid addresses" do
-
+    invalid_addresses = %w[user@example.com user_at_eee.org user.name@example.com eee@i_am_.com foo@ee++aar.com]
+    invalid_addresses.each do |ia|
+      @cocinero.email = ia
+      assert_not @cocinero.valid?, '#{ia.inspect} should be invalid'
+    end
   end
+
 end
