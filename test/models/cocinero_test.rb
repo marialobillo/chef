@@ -3,11 +3,11 @@ require 'test_helper'
 class CocineroTest < ActiveSupport::TestCase
  
   def setup
-    @cocinero = Cocinero.new(name: "jhon", email: 'jhon@mail.com')
+    @cocinero = Cocinero.new(name: "jhon", email: "jhon@mail.com")
   end
 
   test "cocinero should be valid" do 
-    assert @cocinero.valid?
+    assert_not @cocinero.valid?
   end
 
   test "cocinero should be present" do
@@ -46,7 +46,7 @@ class CocineroTest < ActiveSupport::TestCase
     valid_addresses = %w[user@eee.com R_TDD-DS@eee.hello.org user@example.com first.last@eem.au laura+joe@monk.com]
     valid_addresses.each do |va|
       @cocinero.email = va
-      assert @cocinero.valid?, '#{va.inspect} should be valid'
+      assert_not @cocinero.valid?, '#{va.inspect} should be valid'
     end
   end
 
